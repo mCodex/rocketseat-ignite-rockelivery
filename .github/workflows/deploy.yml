@@ -47,3 +47,13 @@ jobs:
 
       - name: Run tests
         run: mix test
+
+      - name: Check Coverage
+        run: mix coveralls.json
+        env:
+          MIX_ENV: test
+
+      - name: Run Codecov script
+        run: bash <(curl -s https://codecov.io/bash)
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
